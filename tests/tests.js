@@ -7,52 +7,102 @@ require(['mainController','sinon'], function(main,sinon) {
 		}
 	}
 
-	QUnit.test( "Sanitize Method Returns Error if Empty String is Passed", function(assert) {
+	QUnit.test( "calculatePennies should return the correct amount of pence", function(assert) {
 		
-		var spy = sinon.spy(mockObject,"mockCallback");
-
-		main.sanitizeInput('',mockObject.mockCallback);
-
-	  	assert.ok(spy.calledWith('Empty String'));
-
-	  	spy.restore();
+		var amount = main.calculatePennies('4');
+	  	assert.ok(amount === 4);
 
 	});
 
-	QUnit.test( "Sanitize Method Returns Error Missing Digits if Charachters only String is Passed", function(assert) {
+	QUnit.test( "calculatePennies should return the correct amount of pence", function(assert) {
 		
-		var spy = sinon.spy(mockObject,"mockCallback");
+		var amount = main.calculatePennies('85');
+	  	assert.ok(amount === 85);
 
-		main.sanitizeInput('£p',mockObject.mockCallback);
+	});
 
-	  	assert.ok(spy.calledWith('Missing Digits'));
+	QUnit.test( "calculatePennies should return the correct amount of pence", function(assert) {
+		
+		var amount = main.calculatePennies('197p');
+	  	assert.ok(amount === 197);
 
-	  	spy.restore();
+	});
+
+	QUnit.test( "calculatePennies should return the correct amount of pence", function(assert) {
+		
+		var amount = main.calculatePennies('2p');
+	  	assert.ok(amount === 2);
+
+	});
+
+	QUnit.test( "calculatePennies should return the correct amount of pence", function(assert) {
+		
+		var amount = main.calculatePennies('1.87');
+	  	assert.ok(amount === 187);
+
+	});
+
+	QUnit.test( "calculatePennies should return the correct amount of pence", function(assert) {
+		
+		var amount = main.calculatePennies('£1.23');
+	  	assert.ok(amount === 123);
+
+	});
+
+	QUnit.test( "calculatePennies should return the correct amount of pence", function(assert) {
+		
+		var amount = main.calculatePennies('£2');
+	  	assert.ok(amount === 200);
+
+	});
+
+	QUnit.test( "calculatePennies should return the correct amount of pence", function(assert) {
+		
+		var amount = main.calculatePennies('£10');
+	  	assert.ok(amount === 1000);
+
+	});
+
+	QUnit.test( "calculatePennies should return the correct amount of pence", function(assert) {
+		
+		var amount = main.calculatePennies('£1.87p');
+	  	assert.ok(amount === 187);
+
+	});
+
+	QUnit.test( "calculatePennies should return the correct amount of pence", function(assert) {
+		
+		var amount = main.calculatePennies('£1p');
+	  	assert.ok(amount === 100);
 
 	});
 
 
-	QUnit.test( "Sanitize Method Returns Error Non numeric character if String contains invalid characters ", function(assert) {
+	QUnit.test( "calculatePennies should return the correct amount of pence", function(assert) {
 		
-		var spy = sinon.spy(mockObject,"mockCallback");
-
-		main.sanitizeInput('£1x.0p',mockObject.mockCallback);
-
-	  	assert.ok(spy.calledWith('Non numeric character'));
-
-	  	spy.restore();
+		var amount = main.calculatePennies('£1.p');
+	  	assert.ok(amount === 100);
 
 	});
 
-	QUnit.test( "Sanitize Method Returns Error Non numeric character if String contains invalid characters ", function(assert) {
+	QUnit.test( "calculatePennies should return the correct amount of pence", function(assert) {
 		
-		var spy = sinon.spy(mockObject,"mockCallback");
+		var amount = main.calculatePennies('001.41p');
+	  	assert.ok(amount === 141);
 
-		main.sanitizeInput('1x',mockObject.mockCallback);
+	});
+	
+	QUnit.test( "calculatePennies should return the correct amount of pence", function(assert) {
+		
+		var amount = main.calculatePennies('4.235p');
+	  	assert.ok(amount === 424);
 
-	  	assert.ok(spy.calledWith('Non numeric character'));
+	});
 
-	  	spy.restore();
+	QUnit.test( "calculatePennies should return the correct amount of pence", function(assert) {
+		
+		var amount = main.calculatePennies('£1.257422457p');
+	  	assert.ok(amount === 126);
 
 	});
 

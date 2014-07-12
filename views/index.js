@@ -33,19 +33,24 @@ require(['jQuery','mainController','Coin'], function(jQuery,mainController,Coin)
 	  				if(err){
 	  					showError(err);
 	  				}else{
-		  				mainController.calculateCoins(data);
+		  				showSuccess(data);
 	  				}
 
 	  			});
+
+
 
   			}
   		})
   	}
 
   	function showError(err){
-  		console.log('here')
   		$('.error').html(err);
   	}
+
+    function showSuccess(data){
+      $('.success').html(data);
+    }
 
   	init();
 });

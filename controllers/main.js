@@ -15,25 +15,41 @@ define('mainController',function(){
 					}else if(data.match(/[^£,p.\d]/)){
 						callback('Non numeric character',data);
 					}else{
-						mainController.calculateCoins(data);
+						mainController.calculateCoins(data,callback);
 					}						
 				}
 
-				//if everything is ok - call the callback without error
-				callback();
+			},
+
+			calculateCoins: function(data,callback){
+
+				var numberOfPennies = mainController.calculatePennies(data);
+
+				callback(null,'test');
+
 			},
 
 
-			calculateCoins: function(data,callback){
+			calculatePennies: function(data){
 				
-				//calculate the result and display it on the screen
-				//if callback is provided allow the user to handle the output
-				if(callback){
-					callback()
-				}else{	
-
+				//if the pound symbol is included the set the flag to true
+				//so we do not remove the trailing zeros
+				var is_pound = false;
+				if(data.indexOf('£') >= 0){
+					is_pound = true
 				}
+
+				//calculate the result - do the correct rounding and call the next method
+				var num = parseFloat(data.replace(/[£,p]/g, '')).toFixed(2);
+				if(!is_pound){
+					num = num.replace(/0+$/, "");
+				}
+				amount = Math.round(parseFloat(num.replace(/\D/g,'')));
+
+				return amount
+
 			}
+
 
 		};
 
