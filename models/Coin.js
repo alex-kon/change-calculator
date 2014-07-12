@@ -1,7 +1,8 @@
-function Coin(value){
+function Coin(name,value,symbol){
+	this.name=name;
 	this.value = value;
 	this.quantity = null;
-	this.symbol = null;
+	this.symbol = symbol;
 }
 
 Coin.prototype.setSymbol = function(symbol) {
