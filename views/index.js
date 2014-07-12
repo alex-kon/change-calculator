@@ -1,6 +1,20 @@
 require(['jQuery','mainController'], function(jQuery,mainController) {
-  //some code
-      console.log('jQuery version:', $.fn.jquery); // 1.9.0
-      console.log(mainController,'----')
+  	
+  	function init(){
+  		bindEvents();
+  	}
+
+  	function bindEvents(){
+  		$('#amount').on('enterKey',function(event){
+
+  			var data = $(this).val();
+
+  			mainController.sanitizeInput(data,function(){
+
+  				mainController.calculateCoins(data);
+
+  			})
+  		})
+  	}
 
 });
