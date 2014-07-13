@@ -107,4 +107,12 @@ require(['mainController','sinon'], function(main,sinon) {
 	});
 
 
+	QUnit.test( "calculateCoins should return the minimum amount of pence required to make an amount", function(assert) {
+		
+		var amount = main.calculateCoins('123p');
+	  	assert.ok(amount === '£1,50p,20p,2p,1p');
+
+	});
+
+
 });

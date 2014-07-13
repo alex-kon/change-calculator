@@ -1,8 +1,21 @@
 
-define('mainController',function(){
+define(["Coin"],function(Coin){
 
+		var coins = [];
 
 		var mainController = {
+
+		  	
+		  	initModels: function(){
+
+		    	coins.push(new Coin(200,'£2'));
+		    	coins.push(new Coin(100,'£1'));
+		    	coins.push(new Coin(50,'50p'));
+		    	coins.push(new Coin(20,'20p'));
+		    	coins.push(new Coin(2,'2p'));
+		   		coins.push(new Coin(1,'1p'));
+
+		  	},
 
 			sanitizeInput : function(data,callback){
 
@@ -15,20 +28,37 @@ define('mainController',function(){
 					}else if(data.match(/[^£,p.\d]/)){
 						callback('Non numeric character',data);
 					}else{
-						mainController.calculateCoins(data,callback);
+						var coins = mainController.calculateCoins(data);
+						callback(null,coins);
 					}						
 				}
 
 			},
 
-			calculateCoins: function(data,callback){
+			calculateCoins: function(data){
 
 				var numberOfPennies = mainController.calculatePennies(data);
+				var n = coins.length;
+				var coins_used = [];
+				var coin = null;
+				var coins_to_use = [];
 
-				callback(null,'test');
+				//greedy algorithm, repeatedly use the largest
+				//coin less than or equal until the remaining sum
+				//could replace this with the optimal sollution
+				for(i=0;i<n;i++){
 
+					var coin = coins[i];
+
+					if (coin.value > numberOfPennies) {
+                		continue;
+            		}
+
+            		coins_to_use.push(coin.name);
+				}
+
+				return coins_to_use.toString();
 			},
-
 
 			calculatePennies: function(data){
 				

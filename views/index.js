@@ -1,24 +1,9 @@
 require(['jQuery','mainController','Coin'], function(jQuery,mainController,Coin) {
   	
-  	var coins = [];
 
   	function init(){
   		bindEvents();
-  		createModels();
-  		initModels();
-  	}
-
-  	function initModels(){
-  	// 	coins.push(new Coin(200,'2£'));
-  	// 	coins.push(new Coin(100,'1£'));
-  	// 	coins.push(new Coin(50,'50p'));
-  	// 	coins.push(new Coin(20,'20p'));
-  	// 	coins.push(new Coin(2,'2p'));
- 		// coins.push(new Coin(1,'1p'));
-  	}
-
-  	function createModels(){
-
+      mainController.initModels();
   	}
 
   	function bindEvents(){
@@ -29,7 +14,7 @@ require(['jQuery','mainController','Coin'], function(jQuery,mainController,Coin)
 	  			var data = $(this).val();
 
 	  			mainController.sanitizeInput(data,function(err,data){
-
+            console.log('back',data)
 	  				if(err){
 	  					showError(err);
 	  				}else{
@@ -37,8 +22,6 @@ require(['jQuery','mainController','Coin'], function(jQuery,mainController,Coin)
 	  				}
 
 	  			});
-
-
 
   			}
   		})
@@ -49,6 +32,7 @@ require(['jQuery','mainController','Coin'], function(jQuery,mainController,Coin)
   	}
 
     function showSuccess(data){
+      console.log('success',data)
       $('.success').html(data);
     }
 
