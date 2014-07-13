@@ -1,11 +1,13 @@
 require(['jQuery','mainController','Coin'], function(jQuery,mainController,Coin) {
   	
 
+    /* init the event handlers the models */
   	function init(){
   		bindEvents();
       mainController.initModels();
   	}
 
+    /* bind the events handlers */
   	function bindEvents(){
   		$('#amount').keypress(function(event){
 
@@ -28,11 +30,12 @@ require(['jQuery','mainController','Coin'], function(jQuery,mainController,Coin)
   	}
 
   	function showError(err){
+      $('.success').html('');
   		$('.error').html(err);
   	}
 
     function showSuccess(data){
-      console.log('success',data)
+      $('.error').html('')
       $('.success').html(data);
     }
 

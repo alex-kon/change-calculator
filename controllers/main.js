@@ -5,7 +5,7 @@ define(["Coin"],function(Coin){
 
 		var mainController = {
 
-		  	
+		  	/* init the models using consutor functions */
 		  	initModels: function(){
 
 		    	coins.push(new Coin(200,'£2'));
@@ -17,6 +17,7 @@ define(["Coin"],function(Coin){
 
 		  	},
 
+		  	/* sanitize the user input */
 			sanitizeInput : function(data,callback){
 
 				//sanitize - validate user data
@@ -35,6 +36,7 @@ define(["Coin"],function(Coin){
 
 			},
 
+			
 			calculateCoins: function(data){
 
 				var numberOfPennies = mainController.calculatePennies(data);
