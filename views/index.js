@@ -36,7 +36,7 @@ require(['jQuery','mainController','Coin'], function(jQuery,mainController,Coin)
 
     function showSuccess(data){
       $('.error').html('')
-      $('.success').html(data);
+      $('.success').html('Number of change : '+data);
     }
 
   	init();
