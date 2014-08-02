@@ -1,2 +1,2 @@
-Javascript App to calculate the minimum number of coins 
+JavaScript App to calculate the minimum number of coins 
 =======
